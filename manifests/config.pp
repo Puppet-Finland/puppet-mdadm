@@ -13,7 +13,8 @@ class mdadm::config
     augeas { 'mdadm-mailaddr':
         context => '/files/etc/mdadm/mdadm.conf',
         changes => "set mailaddr/value ${email}",
-        lens => 'Mdadm_conf.lns',
-        incl => '/etc/mdadm/mdadm.conf',
+        lens    => 'Mdadm_conf.lns',
+        incl    => '/etc/mdadm/mdadm.conf',
+        require => Class['mdadm::install'],
     }
 }

@@ -6,7 +6,7 @@
 class mdadm::install inherits mdadm::params {
 
     package { 'mdadm':
-        name => "${::mdadm::params::package_name}",
         ensure => installed,
+        name   => $::mdadm::params::package_name,
     }
 }

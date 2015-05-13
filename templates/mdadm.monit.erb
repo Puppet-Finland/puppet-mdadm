@@ -1,6 +1,6 @@
 ### THIS FILE IS MANAGED BY PUPPET. ANY MANUAL CHANGES WILL GET OVERWRITTEN.
 
-check process mdadm with pidfile <%= scope.lookupvar('mdadm::params::pidfile') %>
-   start program = "<%= scope.lookupvar('mdadm::params::service_start') %>"
-   stop  program = "<%= scope.lookupvar('mdadm::params::service_stop') %>"
-   alert <%= scope.lookupvar('mdadm::monit::monitor_email') %> with reminder on 480 cycles
+check process mdadm with pidfile <%= scope['mdadm::params::pidfile'] %>
+   start program = "<%= scope['mdadm::params::service_start'] %>"
+   stop  program = "<%= scope['mdadm::params::service_stop'] %>"
+   alert <%= scope['mdadm::monit::monitor_email'] %> with reminder on 480 cycles

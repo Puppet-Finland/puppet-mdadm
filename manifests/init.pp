@@ -11,6 +11,8 @@
 #
 # == Parameters
 #
+# [*manage*]
+#   Manage mdadm using Puppet. Valid values are 'yes' (default) and 'no'.
 # [*monitor_email*]
 #   Server monitoring email. Defaults to $::servermonitor.
 #
@@ -24,24 +26,24 @@
 #
 class mdadm
 (
+    $manage = 'yes',
     $monitor_email=$::servermonitor
 
 ) inherits mdadm::params
 {
 
-# Rationale for this is explained in init.pp of the sshd module
-if hiera('manage_mdadm', 'true') != 'false' {
+if $manage == 'yes' {
 
-    include mdadm::install
+    include ::mdadm::install
 
-    class { 'mdadm::config':
+    class { '::mdadm::config':
         email => $monitor_email,
     }
 
-    include mdadm::service
+    include ::mdadm::service
 
     if tagged('monit') {
-        class { 'mdadm::monit':
+        class { '::mdadm::monit':
             monitor_email => $monitor_email,
         }
     }

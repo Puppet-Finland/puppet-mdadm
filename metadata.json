@@ -1,12 +1,14 @@
 {
   "name": "puppetfinland-mdadm",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Puppet-Finland team",
   "license": "BSD license",
   "summary": "Manage mdadm monitoring",
   "source": "https://github.com/Puppet-Finland/mdadm.git",
   "project_page": "https://github.com/Puppet-Finland/mdadm",
   "dependencies": [
-    { "name": "puppetfinland/monit", "version_requirement": ">= 0.5.0" }
+    { "name": "puppetfinland/monit", "version_requirement": ">= 0.5.0" },
+    { "name": "puppetfinland/os", "version_requirement": ">= 0.5.7" },
+    { "name": "puppetfinland/systemd", "version_requirement": ">= 0.1.0" }
   ]
 }

@@ -5,17 +5,25 @@
 #
 class mdadm::params {
 
+    include ::os::params
+
     case $::osfamily {
         'Debian': {
             $package_name = 'mdadm'
             $config_name = '/etc/mdadm/mdadm.conf'
             $service_name = 'mdadm'
             $pidfile = '/run/mdadm/monitor.pid'
-            $service_start = "/usr/sbin/service $service_name start"
-            $service_stop = "/usr/sbin/service $service_name stop"
         }
         default: {
             fail("Unsupported operating system: ${::osfamily}")
         }
+    }
+
+    if str2bool($::has_systemd) {
+        $service_start = "${::os::params::systemctl} start ${service_name}"
+        $service_stop = "${::os::params::systemctl} stop ${service_name}"
+    } else {
+        $service_start = "${::os::params::service_cmd} ${service_name} start"
+        $service_stop = "${::os::params::service_cmd} ${service_name} stop"
     }
 }
