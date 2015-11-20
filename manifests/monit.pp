@@ -10,6 +10,7 @@ class mdadm::monit
 ) inherits mdadm::params
 {
     monit::fragment { 'mdadm-mdadm.monit':
+        basename   => 'mdadm',
         modulename => 'mdadm',
     }
 }
