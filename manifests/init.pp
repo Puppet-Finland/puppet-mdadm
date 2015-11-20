@@ -12,7 +12,7 @@
 # == Parameters
 #
 # [*manage*]
-#   Manage mdadm using Puppet. Valid values are 'yes' (default) and 'no'.
+#   Manage mdadm using Puppet. Valid values are true (default) and false.
 # [*monitor_email*]
 #   Server monitoring email. Defaults to $::servermonitor.
 #
@@ -26,13 +26,15 @@
 #
 class mdadm
 (
-    $manage = 'yes',
+    $manage = true,
     $monitor_email=$::servermonitor
 
 ) inherits mdadm::params
 {
 
-if $manage == 'yes' {
+validate_bool($manage)
+
+if $manage {
 
     include ::mdadm::install
 
