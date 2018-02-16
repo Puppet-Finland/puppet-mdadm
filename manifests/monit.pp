@@ -5,7 +5,7 @@
 #
 class mdadm::monit
 (
-    $monitor_email
+    String $monitor_email
 
 ) inherits mdadm::params
 {
