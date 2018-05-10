@@ -1,25 +1,15 @@
 # mdadm
 
-A Puppet module for managing mdadm
+A Puppet module for configuring Linux software RAID monitoring with mdadm. Has 
+optional monit support.
 
 # Module usage
 
-* [Class: mdadm](manifests/init.pp)
+Usage is this simple:
 
-# Dependencies
+    include ::mdadm
 
-See [metadata.json](metadata.json).
-
-# Operating system support
-
-This module has been tested on
-
-* Ubuntu 14.04
-
-Any *NIX-style operating system should work out of the box or with small
-modifications.
-
-For details see [params.pp](manifests/params.pp).
+For details see [init.pp](manifests/init.pp)
 
 # TODO
 
