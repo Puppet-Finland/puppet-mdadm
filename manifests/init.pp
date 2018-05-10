@@ -14,7 +14,7 @@
 # [*manage*]
 #   Manage mdadm using Puppet. Valid values are true (default) and false.
 # [*manage_monit*]
-#   Monitor mdadm with Monit. Valid values are true and false (default).
+#   Monitor mdadm with Monit. Valid values are true (default) and false.
 # [*monitor_email*]
 #   Server monitoring email. Defaults to $::servermonitor.
 #
@@ -29,7 +29,7 @@
 class mdadm
 (
     Boolean $manage = true,
-    Boolean $manage_monit = false,
+    Boolean $manage_monit = true,
             $monitor_email=$::servermonitor
 
 ) inherits mdadm::params
