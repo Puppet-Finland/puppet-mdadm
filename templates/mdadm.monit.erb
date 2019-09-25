@@ -4,3 +4,4 @@ check process mdadm with pidfile <%= scope['mdadm::params::pidfile'] %>
    start program = "<%= scope['mdadm::params::service_start'] %>"
    stop  program = "<%= scope['mdadm::params::service_stop'] %>"
    alert <%= scope['mdadm::monit::monitor_email'] %> with reminder on 480 cycles
+   if does not exist for 1 cycles then exec "/etc/monit/conf-enabled/slack_service_bad.sh" else if succeeded then exec "/etc/monit/conf-enabled/slack_service_good.sh"
